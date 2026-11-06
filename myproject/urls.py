@@ -20,9 +20,5 @@ from sampleapp import views
 
 urlpatterns = [
     path('', views.greeting),
-     path('variable', views.variable),
-      path('safe', views.safevariable),
-      path('condition', views.condition),
-      path('loop', views.loop),
-
+     
 ]

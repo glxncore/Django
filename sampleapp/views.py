@@ -2,18 +2,12 @@
 
 # Create your views here.
 from django.shortcuts import render
+from .forms import LoginForm
 def greeting(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            return render(request,'form-data.html',{
+                'email': form['email'].value
+            })
     return render(request,'index.html')
-def variable(request):
-    count = 23
-    return render(request,'index.html',{'count':count})
-def safevariable(request):
-    count = '<b>23</b>'
-    return render(request,'index.html',{'count':count})
-from django.shortcuts import render
-def condition(request):
-    count = 23
-    return render(request,'index.html',{'count':count})
-def loop(request):
-    students = ['Ajay', 'Vineeth','Sudheesh']
-    return render(request,'index.html',{'students':students})
