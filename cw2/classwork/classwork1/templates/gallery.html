@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Gallery</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <nav>
+        <a href="/gallery/">Gallery</a>
+        <a href="/contact/">Contact</a>
+    </nav>
+
+    <h1>My Image Gallery</h1>
+
+    <div class="gallery">
+
+        <div>
+            <img src="https://picsum.photos/id/10/300/200">
+            <p>Beautiful Forest</p>
+        </div>
+
+        <div>
+            <img src="https://picsum.photos/id/11/300/200">
+            <p>Nature</p>
+        </div>
+
+        <div>
+            <img src="https://picsum.photos/id/12/300/200">
+            <p>Mountain View</p>
+        </div>
+
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>
