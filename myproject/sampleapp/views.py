@@ -1,17 +1,21 @@
 from django.shortcuts import render
-from .forms import LoginForm
-from .models import Customer
+from .forms import LoginModelForm
 def greeting(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = LoginModelForm(request.POST)
         if form.is_valid():
-            cust = Customer()
-            cust.email = form.cleaned_data['email']
-            cust.password = form.cleaned_data['password']
-            cust.save()
+            cust = form.save()
             return render(request,'form-data.html',{
-                 'message': 'Data saved to db'
+                'message': 'Data saved to db',
+                'customer': cust
             })
     else:
-        form = LoginForm()
+        form = LoginModelForm()
     return render(request,'index.html',{'form':form})
+
+def aboutUs(request):
+    return render(request,'about-us.html')
+def pages(request, title):
+    return render(request,'pages.html',{'title':title})
+def count(request, num):
+    return render(request,'count.html',{'num':num})
