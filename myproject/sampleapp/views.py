@@ -21,22 +21,6 @@ def count(request, num):
     return render(request,'count.html',{'num':num})
 
 
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render,redirect
- 
-def signup_page(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()  # Save the new user
-            # Redirect to login page after successful signup
-            return redirect('createproduct')
-    else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
-
-
-
 
 
 from django.contrib.auth.forms import UserCreationForm
@@ -52,3 +36,25 @@ def signup_page(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+from django.shortcuts import render
+
+def pagevisit(request):
+    # Get the current count from the session, or set it to 0 if it doesn't exist
+    count = request.session.get('page_count', 0)
+    # Increment the count
+    count += 1
+    # Store the updated count in the session
+    request.session['page_count'] = count
+    # Render the template with the count variable
+    return render(request,'page_view.html', {'count': count})
+
+
+
+
+
+
+
+
+
+

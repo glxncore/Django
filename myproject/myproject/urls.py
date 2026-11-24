@@ -25,5 +25,8 @@ urlpatterns = [
     path('contactus/', include('contactus.urls')) ,
     path('products/',include('products.urls')),
     path('signup/',views.signup_page,name='signup'),
-    path('signup/',views.signup_page,name='signup')
+    path('productsapi/', include('productsapi.urls')),
+     path('pagevisit/',views.pagevisit,name='page_visit')
+
+    
 ]
